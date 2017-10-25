@@ -2,4 +2,39 @@
 
 oc_platform_homepage:
     path:     /
-    defaults: { _controller: OCPlatformBundle:Default:index }
+    defaults: 
+        _controller: OCPlatformBundle:Article:index
+
+oc_platform_view:
+    path:      /article/{slug}
+    defaults: 
+        _controller: OCPlatformBundle:Article:view
+        id: 7
+    requirements:
+        id: \d+
+    
+oc_platform_add:
+    path:      /creer
+    defaults: 
+        _controller: OCPlatformBundle:Article:add
+
+oc_platform_delete:
+    path:      /delete/{slug}
+    defaults: 
+        _controller: OCPlatformBundle:Article:delete
+    requirements:
+        id: \d+
+
+# Route pour l'API
+
+oc_platform_liste:
+    path:      /articles
+    defaults: 
+        _controller: OCPlatformBundle:Api:simple
+
+oc_platform_detail:
+    path:      /articles/{id}
+    defaults: 
+        _controller: OCPlatformBundle:Api:detail
+    requirements:
+        id: \d+

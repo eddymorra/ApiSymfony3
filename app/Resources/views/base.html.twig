@@ -2,11 +2,13 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>API Symfony 3</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('public/css/index.css') }}">
     </head>
-    <body>
+    <body class="container">
+        <h2>Api Symfony 3</h2>
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
