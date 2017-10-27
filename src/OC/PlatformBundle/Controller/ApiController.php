@@ -43,7 +43,7 @@ class ApiController extends Controller
             $em->persist($article);
             $em->flush();
 
-            return new Response('OK');
+            return new Response('ADD_OK');
         }
         else {
             $result = $em->getRepository('OCPlatformBundle:Article')->getArrayAllArticles();
@@ -65,7 +65,7 @@ class ApiController extends Controller
             $em->remove($article);
             $em->flush();
     
-            return $this->redirectToRoute('oc_platform_list');
+            return new Response('DELETE_OK');
         }
         else {
             $repository = $this->getDoctrine()->getManager()->getRepository('OCPlatformBundle:Article');
