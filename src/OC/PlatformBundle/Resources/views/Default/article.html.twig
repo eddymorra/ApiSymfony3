@@ -22,6 +22,6 @@
     </div>
 
     <a href="{{ path('oc_platform_homepage') }}" class="btn btn-primary">Revenir à la liste</a>
-    <a href="{{ path('oc_platform_delete', {'slug': article.id}) }}" class="btn btn-danger">Supprimer cet article</a>
+    <a href="{{ path('oc_platform_delete', {'id': article.id}) }}" class="btn btn-danger">Supprimer cet article</a>
 
 {% endblock %}

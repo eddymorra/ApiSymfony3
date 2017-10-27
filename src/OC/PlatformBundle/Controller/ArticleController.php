@@ -27,12 +27,12 @@ class ArticleController extends Controller
         return new Response($content);
     }
 
-    // Afficher un article précis par son ID
-    public function viewAction($slug)
+    // Afficher un article précis par son SLUG (id pour l'instant)
+    public function viewAction($id)
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('OCPlatformBundle:Article');
         
-        $article = $repository->getArticleBySlug($slug);
+        $article = $repository->getArticleById($id);
 
         return $this->render('OCPlatformBundle:Default:article.html.twig', array('article' => $article));
     }
@@ -55,7 +55,7 @@ class ArticleController extends Controller
             $em->persist($article);
             $em->flush();
 
-            return $this->redirectToRoute('oc_platform_view', array('slug' => $article->getId()));
+            return $this->redirectToRoute('oc_platform_view', array('id' => $article->getId()));
         }
         else {
             return $this->render('OCPlatformBundle:Default:add.html.twig', array('form' => $form->createView()));
@@ -64,10 +64,10 @@ class ArticleController extends Controller
     }
 
     // Méthode de suppression d'un article par son ID
-    public function deleteAction($slug)
+    public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $article = $em->getRepository('OCPlatformBundle:Article')->find($slug);
+        $article = $em->getRepository('OCPlatformBundle:Article')->getArticleById($id);
 
         $em->remove($article);
         $em->flush();

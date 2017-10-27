@@ -43,14 +43,10 @@ class ApiController extends Controller
             $em->persist($article);
             $em->flush();
 
-            return new Response('Article créé !');
+            return new Response('OK');
         }
         else {
-            $query = $em->createQuery(
-                'SELECT a FROM OCPlatformBundle:Article a'
-            );
-
-            $result = $query->getArrayResult();
+            $result = $em->getRepository('OCPlatformBundle:Article')->getArrayAllArticles();
 
             $response = new JsonResponse($result);
 
@@ -58,13 +54,13 @@ class ApiController extends Controller
         }
     }
 
-    // API par DELETE : Supprime un article par son ID
+    // API par DELETE : Supprime un article désigné par son ID
     // API par GET : Retourne un JSON d'un article par son ID
     public function detailAction($id, Request $request)
     {
         if ($request->isMethod('DELETE')) {
             $em = $this->getDoctrine()->getManager();
-            $article = $em->getRepository('OCPlatformBundle:Article')->find($id);
+            $article = $em->getRepository('OCPlatformBundle:Article')->getArticleById($id);
     
             $em->remove($article);
             $em->flush();

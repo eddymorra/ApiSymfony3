@@ -14,7 +14,7 @@
       <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">
-          <a href="{{ path('oc_platform_view', {'slug': article.id}) }}">
+          <a href="{{ path('oc_platform_view', {'id': article.id}) }}">
             {{ article.title }}
           </a>
         </div>
@@ -24,7 +24,7 @@
 
         <!-- List group -->
         <ul class="list-group">
-          <li class="list-group-item">Par {{ article.createdBy }} le {{ article.createdAt|date("m/d/Y") }}</li>
+          <li class="list-group-item">Par {{ article.createdBy }} le {{ article.createdAt|date("d/m/Y") }}</li>
         </ul>
       </div>
     {% endfor %}

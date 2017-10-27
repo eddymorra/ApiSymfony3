@@ -11,20 +11,28 @@ namespace OC\PlatformBundle\Repository;
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
 
+    // Méthode qui trouve et renvoie un article par son Slug
     public function getArticleBySlug($slug) {
         return $this->find($slug);
     }
 
+    // Méthoid qui trouve et renvoie un article par son Id
     public function getArticleById($id) {
         return $this->find($id);
     }
 
+    // Méthode qui renvoie un tableau d'objets de tout les articles de la table ARTICLE
     public function getAllArticles() {
         return $this->findAll();
     }
 
+    // Méthode qui renvoie un tableau de tout les articles de la table ARTICLE (pour envoi JSON)
     public function getArrayAllArticles() {
-        
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT a FROM OCPlatformBundle:Article a'
+        );
+        return $query->getArrayResult();
     }
 
 }

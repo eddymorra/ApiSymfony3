@@ -6,7 +6,7 @@ oc_platform_homepage:
         _controller: OCPlatformBundle:Article:index
 
 oc_platform_view:
-    path:      /article/{slug}
+    path:      /article/{id}
     defaults: 
         _controller: OCPlatformBundle:Article:view
         id: 7
@@ -19,7 +19,7 @@ oc_platform_add:
         _controller: OCPlatformBundle:Article:add
 
 oc_platform_delete:
-    path:      /delete/{slug}
+    path:      /delete/{id}
     defaults: 
         _controller: OCPlatformBundle:Article:delete
     requirements:
